@@ -1,6 +1,7 @@
 **CIS 442 Project**
 
 Requirements:
+    
     - Users should use Python 3.10 or greater to run the code of this project.
     - User must run the main.py program to execute and find masqueraded files.
 
