@@ -44,16 +44,20 @@ def match_file_signatures(dir_path):
 
         for signature in file_signature:
             with open(file_path, "rb") as f:
-                file_contents = f.read(len(signature) if "?" not in signature else int(len(signature)/2))
+                if isinstance(signature, str):
+                    file_contents = f.read(int(len(signature)/2))
+                else:
+                    file_contents = f.read(len(signature))
 
-            if file_contents == signature:
+            if isinstance(signature, str):
+                if "?" in signature:
+                    part1_signature, part2_signature = bytes.fromhex(signature.split("?")[0]), bytes.fromhex(signature.split("?")[-1])
+                    if file_contents[:len(part1_signature)] == part1_signature and file_contents[-len(part2_signature):] == part2_signature:
+                        found_signature_match = True
+                        break
+            elif file_contents == signature:
                 found_signature_match = True
                 break
-            elif "?" in signature:
-                part1_signature, part2_signature = bytes.fromhex(signature.split("?")[0]), bytes.fromhex(signature.split("?")[-1])
-                if file_contents[:len(part1_signature)] == part1_signature and file_contents[-len(part2_signature):] == part2_signature:
-                    found_signature_match = True
-                    break
 
         if not found_signature_match:
             # Print the masquaraded file to the output box
