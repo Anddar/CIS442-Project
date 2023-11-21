@@ -16,12 +16,12 @@ from signatures import file_signatures
 def check_directory(directory):
     if str(directory).strip() == "":
         clear_output()
-        output_text.insert(tk.END, "Directory field is empty.\n")
+        write_to_output("Directory field is empty.\n")
         return False
     
     elif not os.path.isdir(directory):
         clear_output()
-        output_text.insert(tk.END, f"Directory does not exist: {directory}\n")
+        write_to_output(f"Directory does not exist: {directory}\n")
         return False
     
     return True
@@ -36,7 +36,13 @@ def match_file_signatures(dir_path):
         file_extension = _file.split(".")[-1]
         
         if file_extension not in file_signatures:
-            output_text.insert(tk.END, f"File extension not supported: {file_extension}, file path: {file_path}\n")
+            continue
+        elif file_extension == "txt":
+            with open(file_path, "rb") as f:
+                file_contents = f.read(16)
+                if not all([32 <= byte <= 126 for byte in file_contents]):
+                    write_to_output(f"Masquaraded file found: {file_path}, contents:  {file_contents}\n")
+                    continue
             continue
 
         file_signature = file_signatures[file_extension]
@@ -61,7 +67,7 @@ def match_file_signatures(dir_path):
 
         if not found_signature_match:
             # Print the masquaraded file to the output box
-            output_text.insert(tk.END, f"Masquaraded file found: {file_path}, contents:  {file_contents}\n")
+            write_to_output(f"Masquaraded file found: {file_path}, contents:  {file_contents}\n")
 
 # Opens the file system search to allow the user to select a directory
 def open_file_dialog():
@@ -82,12 +88,17 @@ def submit_action():
     clear_output()
 
     # Start searching for masquaraded files
-    output_text.insert(tk.END, f"Processing directory: {directory}\n")
+    write_to_output(f"Processing directory: {directory}\n")
     match_file_signatures(directory)
 
 # Clears the output box in the GUI
 def clear_output():
     output_text.delete('1.0', tk.END)
+
+def write_to_output(text):
+    output_text.config(state=tk.NORMAL)
+    output_text.insert(tk.END, text)
+    output_text.config(state=tk.DISABLED)
 
 def main():
     # Start the GUI
@@ -121,5 +132,6 @@ if __name__ == '__main__':
     # Output Box
     output_text = scrolledtext.ScrolledText(window, wrap=tk.WORD, width=80, height=20)
     output_text.pack()
+    output_text.config(state=tk.DISABLED)
 
     main()
