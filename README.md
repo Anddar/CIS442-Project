@@ -50,4 +50,5 @@ Description:
     is possible due to a python dictionary storing lists of "file signatures" that can appear for a given "file extension", this
     dictionary is stored within the signatures.py file as to not clutter the main.py file. Once a directory is either selected or
     given within the GUI, a user may press the "Run" button where the program will scan and determine if there are any masqueraded
-    files there, printing out those files to the output box that are masqueraded
+    files there, printing out those files to the output box that are masqueraded. Note that it will only scan the current directories
+    top level, it does not recursively go through folders inside of the directory.
