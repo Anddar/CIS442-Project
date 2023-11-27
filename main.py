@@ -93,7 +93,9 @@ def submit_action():
 
 # Clears the output box in the GUI
 def clear_output():
+    output_text.config(state=tk.NORMAL)
     output_text.delete('1.0', tk.END)
+    output_text.config(state=tk.DISABLED)
 
 def write_to_output(text):
     output_text.config(state=tk.NORMAL)
