@@ -52,3 +52,8 @@ Description:
     given within the GUI, a user may press the "Run" button where the program will scan and determine if there are any masqueraded
     files there, printing out those files to the output box that are masqueraded. Note that it will only scan the current directories
     top level, it does not recursively go through folders inside of the directory.
+
+    Scanning Process: Iterates over files in the directory and checks its extension grabbing the corresponding list of file
+    signatures that go to that extension. Then we read in the bytes of the file checking it against each of the file signatures
+    we have for that extension, if the files bytes do not match one of the signatures we have for that extension then we have
+    a masqueraded file.
