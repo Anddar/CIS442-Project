@@ -21,7 +21,8 @@ Setup Requirements:
 
             Mac/Linux: source ./.env/bin/activate
 
-    Now that venv is active use Python to execute main.py
+    Now that virtual environment (venv) is active use Python to execute main.py
+    (maybe python or python3 in your terminal)
         python main.py
         python3 main.py
 
@@ -57,3 +58,5 @@ Description:
     signatures that go to that extension. Then we read in the bytes of the file checking it against each of the file signatures
     we have for that extension, if the files bytes do not match one of the signatures we have for that extension then we have
     a masqueraded file.
+
+    YouTube Video: https://www.youtube.com/watch?v=tWwvFIeaWCI
