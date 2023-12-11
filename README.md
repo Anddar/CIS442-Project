@@ -1,8 +1,6 @@
 **CIS 442 Project**
 
-This program was created for the course CIS 442 (Digital Forensics)
-taught at the University of Massachusetts Dartmouth
-for the Fall Semester of 2023.
+This repository was created as a requirement of CIS 442 (Fall 2023) at UMass Dartmouth.
 
 Author ~ Andrew Raposo
 
@@ -71,6 +69,8 @@ Description:
       this comprehensive list
 
     YouTube Video Demo: https://www.youtube.com/watch?v=tWwvFIeaWCI
+
+    GitHub Repository: https://github.com/Anddar/CIS442-Project
 
 Test Cases:
 
