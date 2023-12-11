@@ -1,4 +1,9 @@
 **CIS 442 Project**
+This program was created for the course CIS 442 (Digital Forensics)
+taught at the University of Massachusetts Dartmouth
+for the Fall Semester of 2023.
+
+Author ~ Andrew Raposo
 
 Requirements:
     
@@ -59,4 +64,23 @@ Description:
     we have for that extension, if the files bytes do not match one of the signatures we have for that extension then we have
     a masqueraded file.
 
-    YouTube Video: https://www.youtube.com/watch?v=tWwvFIeaWCI
+    File Signature Data: https://en.wikipedia.org/wiki/List_of_file_signatures
+      Note: Program should work with most/all file signatures from the wikipedia table but there are occurences for certain files
+      to have different signatures that are not in this list, there are also old and unique file types that may not be contained in
+      this comprehensive list
+
+    YouTube Video Demo: https://www.youtube.com/watch?v=tWwvFIeaWCI
+
+Test Cases:
+
+    This program comes with a TestDir in it, these were the test cases done/used in the demo video and so we can say that files with
+    these extensions should be caught by this program. Other test cases have been done as well and so I will include those extensions
+    here as well:
+
+    - ISO
+    - TXT
+    - PDF
+    - PNG
+    - XLSX
+    - JPG/JPEG
+    - MP4
